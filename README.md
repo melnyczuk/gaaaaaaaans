@@ -1,3 +1,3 @@
 # Gaaaaaaaans
 
-A simple GAN to make pictures of clouds
+Some GAN stuff for making art
