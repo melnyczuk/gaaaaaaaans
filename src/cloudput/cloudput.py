@@ -139,7 +139,11 @@ class Cloudput(Model):
 
 
 if __name__ == "__main__":
+    import tensorflow as tf
+
     from .loader import Loader
+
+    print(tf.config.list_physical_devices("GPU"))
 
     dir = path.relpath("/inputs/abstract-art")
     images_dir = path.relpath("/outputs/cloudput")
