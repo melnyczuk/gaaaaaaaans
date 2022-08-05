@@ -151,14 +151,14 @@ if __name__ == "__main__":
 
     gan = Cloudput(
         input_size=10,
-        output_resolution=(512, 512),
+        output_resolution=(256, 256),
         weights_dir=weights_dir,
     )
     loader = Loader(gan.resolution)
     training_data = loader.load_as_is(dir)
     gan.train(
         training_data,
-        batch_size=2,
+        batch_size=32,
         epochs=50,
         sample_interval=10,
         images_dir=images_dir,
