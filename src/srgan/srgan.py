@@ -88,17 +88,18 @@ class SRGAN(Model):
         self.resolution = SrganData(lo=input_resolution, hi=output_resolution)
         self.__input_shape = input_shape
         self.__output_shape = output_shape
-        self.__generator = generator
-        self.__discriminator = discriminator
-        self.__vgg = vgg
         self.__patch = (
             int(output_resolution[0] / 2**4),
             int(output_resolution[1] / 2**4),
             1,
         )
+        self.__weights_dir = weights_dir
+
+        self.__generator = generator
+        self.__discriminator = discriminator
+        self.__vgg = vgg
 
         if path.exists(weights_dir):
-            self.__weights_dir = weights_dir
             self.load_weights(weights_epoch)
 
     def generate(self: "SRGAN", imgs: Iterable[np.ndarray]) -> np.ndarray:

@@ -38,14 +38,15 @@ class Cloudput(Model):
 
         self.resolution = output_resolution
         self.__input_size = input_size
+        self.__weights_dir = weights_dir
         self.__shape = shape
+
         self.__generator = generator
         self.__discriminator = discriminator
 
         self.compile(loss="binary_crossentropy", optimizer="Adam")
 
         if path.exists(weights_dir):
-            self.__weights_dir = weights_dir
             self.load_weights(weights_epoch)
 
     def generate(self: "Cloudput", imgs: np.ndarray) -> np.ndarray:
