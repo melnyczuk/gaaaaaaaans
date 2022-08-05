@@ -1,0 +1,34 @@
+jobs:
+  CloneRepo:
+    resources:
+      instance-type: C5
+    outputs:
+      repo:
+        type: volume
+    uses: git-checkout@v1
+    with:
+      url: https://github.com/melnyczuk/gaaaaaaaans.git
+  Cloudput:
+    resources:
+      instance-type: P4000
+    needs:
+      - CloneRepo
+    inputs:
+      repo: CloneRepo.outputs.repo
+      abstract-art:
+        type: dataset
+        with:
+          ref: dsi5tyqayopp7em
+    outputs:
+      absts:
+        type: dataset
+        with:
+          ref: dsi5tyqayopp7em
+    uses: script@v1
+    with:
+      script: |-
+        cd /inputs/repo
+        pip install pipenv
+        pipenv sync
+        pipenv run cloudput
+      image: python:3.10.6

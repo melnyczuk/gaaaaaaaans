@@ -141,9 +141,7 @@ class Cloudput(Model):
 if __name__ == "__main__":
     from .loader import Loader
 
-    dir = path.relpath(
-        "/Users/how/Downloads/b1e027cf-291f-4dbe-b81a-503007cba650"
-    )
+    dir = path.relpath("/inputs/abstract-art")
 
     gan = Cloudput(input_size=10, output_resolution=(128, 128))
     loader = Loader(gan.resolution)
