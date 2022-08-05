@@ -151,7 +151,7 @@ if __name__ == "__main__":
 
     gan = Cloudput(
         input_size=10,
-        output_resolution=(256, 256),
+        output_resolution=(512, 512),
         weights_dir=weights_dir,
     )
     loader = Loader(gan.resolution)
