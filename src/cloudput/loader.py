@@ -13,18 +13,19 @@ class Loader:
     def __init__(self: "Loader", shape: tuple[int, int]) -> None:
         self.__shape = (shape[1], shape[0])
 
-    def load(self: "Loader", dir: str) -> np.ndarray:
+    def prepare_and_load(self: "Loader", dir: str) -> np.ndarray:
         self.__prepare(dir)
         sized_dir = self.__get_sized_dir(dir)
+        return self.load_as_is(sized_dir)
+
+    def load_as_is(self: "Loader", dir: str) -> np.ndarray:
         return self.__normalise_data(
             np.array(
                 [
                     np.array(
-                        Image.open(path.join(sized_dir, file_name)).convert(
-                            "RGB"
-                        )
+                        Image.open(path.join(dir, file_name)).convert("RGB")
                     )
-                    for file_name in listdir(sized_dir)
+                    for file_name in listdir(dir)
                 ],
                 dtype=np.uint8,
             )

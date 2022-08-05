@@ -8,6 +8,7 @@ jobs:
     uses: git-checkout@v1
     with:
       url: https://github.com/melnyczuk/gaaaaaaaans.git
+      ref: 3fcc2622b54873fe6e6b5afbb66ae02ec3210ec8
   Cloudput:
     resources:
       instance-type: P4000
@@ -18,12 +19,12 @@ jobs:
       abstract-art:
         type: dataset
         with:
-          ref: dsi5tyqayopp7em
+          ref: dsi5tyqayopp7em:ame25xz
     outputs:
       absts:
         type: dataset
         with:
-          ref: dsi5tyqayopp7em
+          ref: dsagnu1m6sevqe8
     uses: script@v1
     with:
       script: |-

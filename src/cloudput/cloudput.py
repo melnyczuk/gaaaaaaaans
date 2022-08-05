@@ -143,7 +143,7 @@ if __name__ == "__main__":
 
     dir = path.relpath("/inputs/abstract-art")
 
-    gan = Cloudput(input_size=10, output_resolution=(128, 128))
+    gan = Cloudput(input_size=10, output_resolution=(512, 512))
     loader = Loader(gan.resolution)
-    training_data = loader.load(dir)
-    gan.train(training_data, epochs=1, sample_interval=1)
+    training_data = loader.load_as_is(dir)
+    gan.train(training_data, epochs=50, sample_interval=10)
