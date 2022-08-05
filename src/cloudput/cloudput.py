@@ -142,8 +142,20 @@ if __name__ == "__main__":
     from .loader import Loader
 
     dir = path.relpath("/inputs/abstract-art")
+    images_dir = path.relpath("/outputs/cloudput")
+    weights_dir = path.relpath("/outputs/weights")
 
-    gan = Cloudput(input_size=10, output_resolution=(512, 512))
+    gan = Cloudput(
+        input_size=10,
+        output_resolution=(512, 512),
+        weights_dir=weights_dir,
+    )
     loader = Loader(gan.resolution)
     training_data = loader.load_as_is(dir)
-    gan.train(training_data, batch_size=32, epochs=50, sample_interval=10)
+    gan.train(
+        training_data,
+        batch_size=32,
+        epochs=50,
+        sample_interval=10,
+        images_dir=images_dir,
+    )
