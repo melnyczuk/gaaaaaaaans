@@ -158,7 +158,7 @@ if __name__ == "__main__":
     training_data = loader.load_as_is(dir)
     gan.train(
         training_data,
-        batch_size=32,
+        batch_size=8,
         epochs=50,
         sample_interval=10,
         images_dir=images_dir,
